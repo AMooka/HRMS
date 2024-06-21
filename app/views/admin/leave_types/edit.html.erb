@@ -1,0 +1,14 @@
+<%= link_to admin_leave_types_path, class: "ml-2 rounded-lg py-3 px-5 inline-block font-medium" do %>
+    <span>Back</span>
+  <% end %>
+<div class="mx-auto md:w-11/12 w-full">
+  <h1 class="font-bold text-2xl py-2">Edit leave</h1>
+  <%= link_to [:admin, @admin_leave_type], class: "inline-block font-medium hover:text-blue-500" do %>
+    <%= icon('fa-solid', 'eye')%><span> Show</span>
+  <% end %>
+
+  <hr class="mt-2 border border-blue-500"></hr>
+  <div class="border border-blue-500 mt-2 px-5 py-2">
+  <%= render "form", admin_leave_type: @admin_leave_type %>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+
+<div class="">
+    <div>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <div>
+        <h1 class="font-bold text-black text-2xl">Dashboard</h1>
+    </div>
+    <hr/>
+
+    <div class="mt-2 text-white p-5 grid md:grid-cols-2 lg:grid-cols-4 gap-5 text-center">
+
+    <!--Dasboard cards-->
+    <% if @departments != 0 || @departments != "" %>
+    <div class="bg-gradient-to-r from-gray-700 to-blue-600 rounded-md font-bold text-sm mt-2 p-5">
+    <h1>Total Departments</h1>
+    <section class="py-3">
+        <%= @department_number %> 
+        <%= link_to admin_departments_path do %>
+            <%= icon('fa-solid', 'eye', class: "px-1 text-white py-1 rounded-md hover:text-green-400 justify-center items-center inline")%>
+        <% end %>
+    </section>
+    </div>
+    <%end%>
+
+    <% if @admin_employees != 0 || @admin_employees != "" %>
+        <div class="bg-gradient-to-r from-orange-200 to-orange-800 rounded-md font-bold text-sm mt-2 p-5">
+        <h1>Total Employees</h1>
+            <section class="py-3">
+            <%= @employe_count %> 
+                <%= link_to admin_employees_path do %>
+                    <%= icon('fa-solid', 'eye', class: "px-1 text-white py-1 rounded-md hover:text-green-400 justify-center items-center inline")%>
+                <% end %>
+            </section>
+        </div>
+    <%end%>
+
+    <% if @jobapplications != 0 && @jobapplications != "" || NULL%>
+        <div class="bg-gradient-to-bl from-sky-700 to-gray-900 rounded-md font-bold text-sm mt-2 p-5">
+            <h1>Total Applications</h1>
+            <section class="py-3">
+                <%= @job_application_number%>
+                <%= link_to admin_job_applications_path do %>
+                    <%= icon('fa-solid', 'eye', class: "px-1 text-white py-1 rounded-md hover:text-green-400 justify-center items-center inline")%>
+                <% end %>
+            </section>
+        </div>
+        <% end %>
+
+    <% if @jobapplications != 0 && @jobapplications != "" || NULL%>
+        <div class="bg-gradient-to-bl from-sky-700 to-gray-900 rounded-md font-bold text-sm mt-2 p-5">
+            <h1>Total Vacancies</h1>
+            <section class="py-3">
+                <%= @job_application_number%>
+                <%= link_to admin_jobs_path do %>
+                    <%= icon('fa-solid', 'eye', class: "px-1 text-white py-1 rounded-md hover:text-green-400 justify-center items-center inline")%>
+                <% end %>
+            </section>
+        </div>
+        <% end %>
+
+</div>
+</div>
+</div>
+   
+
+   

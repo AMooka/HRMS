@@ -1,0 +1,2 @@
+module Employee::LeaveapplicationsHelper
+end

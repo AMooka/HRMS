@@ -1,0 +1,32 @@
+<div id="<%= dom_id leave_application %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Employee:</strong>
+    <%= leave_application.employee_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Leavetype:</strong>
+    <%= leave_application.leavetype_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Start date:</strong>
+    <%= leave_application.start_date %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">End date:</strong>
+    <%= leave_application.end_date %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Reason:</strong>
+    <%= leave_application.reason %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this leave application", leave_application, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this leave application", edit_leave_application_path(leave_application), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

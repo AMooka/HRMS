@@ -1,0 +1,52 @@
+<div id="<%= dom_id emp_appraisal %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= emp_appraisal.employee_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Department:</strong>
+    <%= emp_appraisal.department_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Data of appraisal:</strong>
+    <%= emp_appraisal.data_of_appraisal %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Achievement:</strong>
+    <%= emp_appraisal.achievement %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Skills:</strong>
+    <%= emp_appraisal.skills %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Strengths:</strong>
+    <%= emp_appraisal.strengths %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Area of improvement:</strong>
+    <%= emp_appraisal.area_of_improvement %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Overal performance:</strong>
+    <%= emp_appraisal.overal_performance %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Additional comments:</strong>
+    <%= emp_appraisal.additional_comments %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this emp appraisal", [:employee, emp_appraisal], class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this emp appraisal", edit_employee_emp_appraisal_path(emp_appraisal), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

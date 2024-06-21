@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee: one
+  leavetype: one
+  start_date: 2024-06-12
+  end_date: 2024-06-12
+  reason: MyString
+
+two:
+  employee: two
+  leavetype: two
+  start_date: 2024-06-12
+  end_date: 2024-06-12
+  reason: MyString

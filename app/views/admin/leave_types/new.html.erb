@@ -1,0 +1,8 @@
+<%= link_to admin_leave_types_path, class: "ml-2 py-3 px-5 hover:text-red-500 hover:underline inline-block font-medium" do%>
+  <%= icon('fa-solid', 'angle-left') %><span> Back</span>
+<%end %>
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-2xl">New leave type</h1>
+
+  <%= render "form", admin_leave_type: @admin_leave_type %>
+</div>

@@ -1,0 +1,36 @@
+<h1>Applicants</h1>
+<div class="p-0 overflow-x-auto mt-4">
+    <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
+    <thead class="align-bottom">
+        <tr class="bg-blue-950 text-sm">
+            <th class="px-2 py-2 pl-2 font-bold text-left align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white">No</th>
+            <th class="px-2 py-2 pl-2 font-bold text-left align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white">Name</th>
+            <th class="px-2 py-2 pl-2 font-bold text-left align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white">Email</th>
+            <th class="px-2 py-2 pl-2 font-bold text-left align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white">Phone No</th>
+            <th class="px-2 py-2 pl-2 font-bold text-left align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white">Position</th>
+            <th class="px-2 py-2 pl-2 font-bold text-left align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white">Status</th>
+            <th class="px-2 py-2 pl-2 font-bold text-left align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    <% count = 0 %>
+    <% @jobapplication.each do |application|%>
+        <tr>
+            <td class="align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent text-sm"><%= count += 1 %></td>
+            <td class="align-middle text-left bg-transparent border-b whitespace-nowrap shadow-transparent text-sm"><%= link_to application.name, admin_job_application_path(application)%></td>
+            <td class="align-middle text-left bg-transparent border-b whitespace-nowrap shadow-transparent text-sm"><%= application.email%></td>
+            <td class="align-middle text-left bg-transparent border-b whitespace-nowrap shadow-transparent text-sm"><%= application.tel_no%></td>
+            <td class="align-middle text-left bg-transparent border-b whitespace-nowrap shadow-transparent text-sm"><%= application.job.title%></td>
+            <td class="align-middle text-left bg-transparent border-b whitespace-nowrap shadow-transparent text-sm"><%= application.status%></td>
+            <td class="align-middle text-left bg-transparent border-b whitespace-nowrap shadow-transparent text-sm">
+            <% if application.pending? %>
+            <%= link_to "✓", shortlist_admin_job_application_path(application), method: :patch, class: "text-green-500 mx-3"%>
+            <%= link_to "X", cancel_admin_job_application_path(application), method: :patch, class: "text-red-500", data: { confirm: "Are you sure you want to cancel this application?" } %>
+            <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+    </table>
+</div>

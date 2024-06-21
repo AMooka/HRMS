@@ -1,0 +1,24 @@
+<div class="flex-col w-full">
+
+<div class="w-full">
+<div class="bg-slate-100 py-8 w-full">
+    <h1 class="font-bold text-xl text-center text-black">We are Hiring!</h1>
+    <div class="grid md:grid-cols-2 mt-6">
+    <section class="w-full md:w-[85%] lg:w-[70%] mx-auto font-medium text-center text-black mt-4 md:mt-4">
+        <p>Join our growing distributed team and make an impact on millions of users. we are passionate about the Information Technology industry and about helping companies and startups meet their potential through business advisory and Information technology related activities</p>
+    </section>
+
+    <section class="px-3 mt-4 md:mt-1">
+    <div class="bg-gray-900 rounded-sm mt-2 p-5">
+        <% @public_jobs.each do |pjob|%>
+            <h1 class="text-white hover:underline">
+                <%= link_to job_path(pjob) do%>
+                    <%= pjob.title %>
+                <% end %>
+            </h1>
+        <p class="text-gray-500">Posted on: <%= pjob.posting_date %> Expiring on: <%= pjob.expiry_date %></p>
+    <% end %>
+    </div>
+    </section>
+</div>
+</div>

@@ -1,0 +1,35 @@
+
+    <nav class="right-0 fixed sticky">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-50 flex justify-between py-8">
+    <div class="relative z-10 flex items-center"><a aria-label="Home" href="/">
+    </a>
+    <div class="lg:flex lg:gap-10">
+        <a class="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-gray-700 transition-colors delay-150 hover:text-gray-900 hover:delay-0" href="/#features">
+        <span class="relative z-10">Home</span></a>
+
+        <%= link_to jobs_path, class: "relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-gray-700 transition-colors delay-150 hover:text-gray-900 hover:delay-0" do %>
+        <span class="relative z-10">Job Openings</span>
+        <% end %>
+        
+        <a class="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-gray-700 transition-colors delay-150 hover:text-gray-900 hover:delay-0" href="/#pricing">
+        <span class="relative z-10">Shortlist</span>
+        </a>
+    </div>
+    </div>
+    <div class="flex items-center gap-6">
+        
+        <div hidden="" style="position:fixed;top:1px;left:1px;width:1px;height:0;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0;display:none">
+        </div>
+
+        <%=link_to admin_path, class: "bg-blue-500 text-white inline-flex justify-center rounded-sm py-[calc(theme(spacing.2)-1px)] px-[calc(theme(spacing.3)-1px)] text-sm outline-2 outline-offset-2 transition-colors border-gray-300 text-gray-700 text-sm active:bg-gray-100 active:text-gray-700/80 lg:block" do %>
+        <p><%= icon('fa-solid', 'sign-in')%> Admin Log in</p>
+        <% end %>
+        </div>
+    </div>
+
+    <div class="mb-1 flex text-center w-full">
+        <%= link_to admin_root_path, class: "w-2/3 mx-auto" do %>
+          <%= image_tag "INFOCODE-LOGO-FILE-1.png", class: "w-[200px] item-center object-center mx-auto"%>
+         <%end%>
+      </div>
+    </nav>

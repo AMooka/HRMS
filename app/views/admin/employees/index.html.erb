@@ -1,0 +1,80 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice">
+    <%= notice %>
+    </p>
+  <% end %>
+
+  <%= render 'admin/employees/search_form' %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-xl">Employees</h1>
+
+    <div class=" justify-center items-center hover:bg-blue-500">
+          <%= link_to new_admin_employee_path do %>
+            <span class="px-1 bg-sky-600 text-white px-2 py-1 rounded-sm hover:bg-blue-700 justify-center items-cente">
+            <%= icon('fa-solid', 'plus', class: "")%> New</span>
+          <% end %>
+      </div>
+  </div>
+
+  <div class="items-center block w-auto max-h-screen overflow-auto h-sidenav grow basis-full">
+    <div class="w-full py-6 mx-auto">
+      <div class="flex-auto px-0 pt-0 pb-2">
+                <div class="p-0 overflow-x-auto">
+                  <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
+                    <thead class="align-bottom">
+                      <tr class="bg-blue-950">
+                        <th class="px-2 py-2 pl-2 text-sm text-left align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white">Name</th>
+                        <th class="px-2 py-2 pl-2 text-sm text-left align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white">Email</th>
+                        <th class="px-2 py-2 pl-2 text-sm text-left align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white">Position</th>
+                        <th class="px-2 py-2 pl-2 text-sm text-left align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white">Actions</th>
+                      </tr>
+                    </thead>
+
+
+                    <tbody class="text-md">
+                     <% @admin_employees.each do |emp|%>
+                      <tr>
+                        <td class="align-middle text-left bg-transparent border-b whitespace-nowrap shadow-transparent">
+                          <%= link_to emp.last_name + " " + emp.first_name, admin_employee_path(emp)%>
+                        </td>
+                        <td class="align-middle text-left bg-transparent border-b whitespace-nowrap shadow-transparent">
+                          <%= emp.email %>
+                        </td>
+
+                        <td class="align-middle text-left bg-transparent border-b whitespace-nowrap shadow-transparent">
+                          <%= emp.position %>
+                        </td>
+
+                        <td class="text-center bg-transparent border-b whitespace-nowrap shadow-transparent py-1 align-center">
+                          <div class="inline">
+                          <%= link_to admin_employee_path(emp) do %>
+                            <%= icon('fa-solid', 'eye', class: "items-center inline")%>
+                          <% end %>
+                          </div>
+
+                          <div class="inline">
+                          <%= link_to edit_admin_employee_path(emp) do %>
+                            <%= icon('fa-solid', 'pen', class: "px-1 text-green-500 py-1 rounded-md hover:text-green-800 justify-center items-center inline")%>
+                          <% end %>
+                          </div>
+
+                          <div class="inline-block">
+                          <%= button_to admin_employee_path(emp), method: :delete do %>
+                            <%= icon('fa-solid', 'trash', class: "text-red-500 inline-block py-1 rounded-md hover:text-red-800 justify-center items-center")%>
+                          <% end %> 
+                          </div>
+                        </td>
+                      </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+    </div>
+  </div>
+</div>
+
+<%#== pagy_nav(@pagy)%>
+

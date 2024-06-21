@@ -1,0 +1,61 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="">
+    <h1 class="font-bold text-2xl mb-3">Leave types</h1>
+
+    <%= link_to new_admin_leave_type_path do %>
+        <span class="mt-4 w-[200px] px-1 bg-sky-600 text-white px-2 py-1 rounded-sm hover:bg-blue-400 justify-center items-cente">
+        <%= icon('fa-solid', 'plus', class: "")%> New Type</span>
+    <% end %>
+
+  <hr class="mt-4 border border-blue-500"></hr>
+    <div class="text-sm items-center block w-auto max-h-screen overflow-auto h-sidenav grow basis-full">
+    <div class="w-full py-6 mx-auto">
+      <div class="flex-auto px-0 pt-0 pb-2">
+                <div class="p-0 overflow-x-auto">
+                  <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
+                    <thead class="align-bottom">
+                      <tr class="bg-blue-950 text-sm">
+                        <th class="px-2 py-2 pl-2 font-bold text-left align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white">Name</th>
+                        <th class="px-2 py-2 pl-2 font-bold text-center align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white">Action</th>                      
+                      </tr>
+                    </thead>
+
+                   
+                    <tbody class="text-md">
+                     <% @admin_leave_types.each do |leavetype|%>
+                      <tr>
+                        <td class="align-middle text-left bg-transparent border-b whitespace-nowrap shadow-transparent">
+                          <%= link_to leavetype.name, admin_leave_type_path(leavetype)%>
+                        </td>
+
+                        <td class="text-center bg-transparent border-b whitespace-nowrap shadow-transparent py-1 align-center">
+                          <div class="inline">
+                          <%= link_to admin_leave_type_path(leavetype) do %>
+                            <%= icon('fa-solid', 'eye', class: "items-center inline")%>
+                          <% end %>
+                          </div>
+
+                          <div class="inline">
+                          <%= link_to edit_admin_leave_type_path(leavetype) do %>
+                            <%= icon('fa-solid', 'pen', class: "px-1 text-green-500 py-1 rounded-md hover:text-green-800 justify-center items-center inline")%>
+                          <% end %>
+                          </div>
+
+                          <div class="inline-block">
+                          <%= button_to admin_leave_type_path(leavetype), method: :delete do %>
+                            <%= icon('fa-solid', 'trash', class: "text-red-500 inline-block py-1 rounded-md hover:text-red-800 justify-center items-center")%>
+                          <% end %> 
+                          </div>
+                        </td>
+                      </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+              </div>
+          </div>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="w-full">
+<%= form_with(model: [:admin, @admin_job], class: "contents text-sm") do |form| %>
+  <% if @admin_job.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(@admin_job.errors.count, "error") %> prohibited this admin_job from being saved:</h2>
+
+      <ul>
+        <% @admin_job.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-2">
+    <%= form.label :title, class: "font-bold"%>
+    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-2">
+    <%= form.label :description, class: "font-bold" %>
+    <%= form.text_area :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-2">
+    <%= form.label :roles, class: "font-bold" %>
+    <%= form.text_area :roles, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-2">
+    <%= form.label :requirements, class: "font-bold" %>
+    <%= form.text_area :requirements, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="md:flex gap-3">
+    <div class=" flex my-2 flex-col">
+      <%= form.label :Gender, class: "font-bold" %>
+      <div class="block">
+        <%= form.text_field :gender, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      </div>
+      </div>
+
+      <div class=" flex my-2 md:ml-8 flex-col">
+      <%= form.label :Job_type, class: "font-bold" %>
+      <div class="block">
+        <%= form.text_field :job_type, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      </div>
+      </div>
+
+      <div class=" flex my-2 md:ml-8 flex-col">
+      <%= form.label :Years_of_experience_in_yrs, class: "font-bold" %>
+      <div class="block">
+        <%= form.text_field :experience, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      </div>
+      </div>
+    </div>
+
+    <div class="flex my-2 flex-col">
+      <%= form.label :Location, class: "font-bold" %>
+      <%= form.text_field :location, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"%>
+    <div>
+  </div>
+
+  <div class="block md:flex gap-3 ">
+    <div class=" flex my-2 flex-col">
+      <%= form.label :posting_date, class: "font-bold" %>
+      <%= form.date_field :posting_date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class=" flex my-2 flex-col">
+      <%= form.label :expiry_date, class: "font-bold" %>
+      <%= form.date_field :expiry_date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+
+  </div>
+
+  <div class="inline">
+  <% if is_new_action? %>
+    <%= form.submit "create", class: "rounded-sm py-1 px-2 bg-blue-600 text-white inline-block cursor-pointer" %>
+    <% else %>
+    <%= form.submit "update", class: "rounded-sm py-1 px-2 bg-blue-600 text-white inline-block cursor-pointer hover:bg-blue-800" %>
+    <% end %>
+  </div>
+<% end %>
+</div>

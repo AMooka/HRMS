@@ -1,0 +1,31 @@
+<%= form_with(model: [:admin, admin_department], class: "contents") do |form| %>
+  <% if admin_department.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(admin_department.errors.count, "error") %> prohibited department from being created:</h2>
+
+      <ul>
+        <% admin_department.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "block shadow rounded-sm border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "block shadow rounded-sm border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="inline">
+  <% if is_new_action? %>
+    <%= form.submit "create", class: "rounded-sm py-1 px-2 bg-blue-600 text-white inline-block cursor-pointer" %>
+    <% else %>
+    <%= form.submit "update", class: "rounded-sm py-1 px-2 bg-blue-600 text-white inline-block cursor-pointer hover:bg-blue-800" %>
+    <% end %>
+  </div>
+<% end %>

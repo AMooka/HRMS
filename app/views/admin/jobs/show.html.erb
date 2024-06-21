@@ -1,0 +1,27 @@
+<%= link_to admin_jobs_path do %>
+      <span class= "mt-2 font-medium hover:text-red-500 hover:underline hover:text-red-500">
+        <%= icon('fa-solid', 'angle-left', class: "")%> Back</span>
+    <% end%>
+    
+<div class="mx-auto mt-2 md:w-11/12 w-full flex">
+
+<div class="border border-blue-200 p-4">
+  <div class="mx-auto">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
+
+    <%= render @admin_job %>
+
+    <%= link_to edit_admin_job_path(@admin_job) do %>
+      <span class= "mt-2 rounded-sm py-1 px-3 bg-blue-500 text-white inline-block font-medium">
+        <%= icon('fa-solid', 'pencil', class: "")%> Edit</span>
+    <% end%>
+
+    <%= link_to admin_job_path(@admin_job), method: :delete do %>
+      <span class= "mt-2 rounded-sm py-1 px-2 bg-red-500 text-white inline-block font-medium">
+        <%= icon('fa-solid', 'trash', class: "")%> Delete</span>
+    <% end%>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<%= link_to admin_leave_types_path, class: "ml-2 hover:underline hover:text-red-500 py-3 px-5 inline-block font-medium" do %>
+<%= icon('fa-solid', 'angle-left') %><span> Back</span>
+<%end%>
+<div class="mx-auto md:w-2/3 w-full flex">
+  <div class="mx-auto">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
+
+    <%= render @admin_leave_type %>
+    <%= link_to edit_admin_leave_type_path(@admin_leave_type), class: "mt-2 rounded-sm text-white py-1 px-3 bg-blue-500 inline-block font-medium" do %>
+        <%= icon('fa-solid', 'pen')%><span> Edit</span>
+    <% end %>
+    <div class="inline-block ml-2">
+      <%= button_to admin_leave_type_path(@admin_leave_type), method: :delete, class: "mt-2 rounded-sm text-white py-1 px-3 bg-red-500 font-medium" do %>
+        <%= icon('fa-solid', 'trash')%><span> Remove</span>
+      <% end %>
+    </div>
+    
+  </div>
+</div>

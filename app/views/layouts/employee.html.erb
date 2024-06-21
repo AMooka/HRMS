@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Employee panel</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <main class="m-0 font-sans text-base antialiased font-normal leading-default bg-gray-50 text-slate-800 flex">  
+
+    <!-- start sidebar -->
+    <div class="hidden md:flex flex-col text-white border-r bg-sky-600 border-gray-300 flex-none w-64 md:top-0 md:z-30 h-screen sticky fixed top-0 animated faster p-2">
+    
+         <%= link_to admin_path, class: "abolute block m-0 text-sm whitespace-nowrap text-slate-700" do %>
+          <%= image_tag "INFOCODE-LOGO-FILE-1.png"%>
+         <%end%>
+        
+      <p class="uppercase text-xs text-white mx-2 font-bold mt-4 tracking-wider">Profile</p>
+
+      
+      <!-- link -->
+      <%= link_to admin_departments_path, class: "py-2.7 text-sm mt-1 ease-nav-brand my-0 flex items-center whitespace-nowrap px-4 transition-colors" do %>
+              <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-full bg-white bg-center stroke-0 text-center xl:p-2.5">
+                <%= icon('fa-solid', 'users', class: "text-sky-700")%>
+              </div>
+              <span class="ml-1 duration-300 opacity-100">Notifications</span>
+      <% end %>
+
+      <%= link_to edit_user_password_path, class: "mt-1 text-sm ease-nav-brand my-0 flex items-center whitespace-nowrap px-4 transition-colors" do %>
+              <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-full bg-white bg-center stroke-0 text-center">
+                <%= icon('fa-solid', 'address-card', class: "text-sky-700")%>
+              </div>
+              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Profile</span>
+      <% end %>
+      <!-- end link -->
+      
+      <!--Employee Panel-->
+      <p class="uppercase text-xs text-white mx-2 font-bold mt-4 tracking-wider">Employee</p>
+              
+      <!-- end link -->
+      
+            <a class="py-2.7 text-sm mt-1 ease-nav-brand my-0 flex items-center whitespace-nowrap px-4 transition-colors" href="./pages/tables.html">
+              <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-full bg-white bg-center stroke-0 text-center xl:p-2.5">
+                <%= icon('fa-solid', 'pen-to-square', class: "text-sky-700")%>
+              </div>
+              <span class="ml-1 duration-300 opacity-100">Contract Management</span>
+            </a>
+
+            <%= link_to new_employee_leave_application_path, class: "py-2.7 text-sm mt-1 ease-nav-brand my-0 flex items-center whitespace-nowrap px-4 transition-colors" do %>
+              <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-full bg-white bg-center stroke-0 text-center xl:p-2.5">
+                <%= icon('fa-solid', 'outdent', class: "text-sky-700")%>
+              </div>
+              <span class="ml-1 duration-300 opacity-100">Apply for leave</span>
+            <% end %>
+
+
+            <%= link_to employee_emp_appraisals_path, class:"py-2.7 text-sm mt-1 ease-nav-brand my-0 flex items-center whitespace-nowrap px-4 transition-colors" do %>
+              <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-full bg-white bg-center fill-current stroke-0 text-center xl:p-2.5">
+                     <%= icon('fa-solid', 'chart-line', class: "text-sky-700")%>     
+              </div>
+              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Performance Tracker</span>
+            <% end %>
+</div>
+
+    <div class="mt-2 w-full p-3">
+      <%= yield%>
+    </div>
+  </div>
+  </main>
+  </body>
+</html>

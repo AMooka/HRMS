@@ -1,0 +1,64 @@
+
+<div class="mt-4 w-full text-sm">
+<%= link_to root_path, class: "hover:text-red-500 hover:underline" do %>
+  <span>Back</span>
+<% end %>
+<div class="flex-col w-full lg:md-11/12 md:w-11/12 mt-3 mx-auto bg-white border-2 border-blue-300 py-3 px-9">
+<h1 class="text-green-500 text-center">Fill the form and submit apply for the job</h1>
+
+<%= form_with(model: @jobapplication, class: "contents") do |form| %>
+  <% if @jobapplication.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(@jobapplication.errors.count, "error") %> application unsuccessful</h2>
+
+      <ul>
+        <% @jobapplication.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="text-black">
+    <%= form.label :which_position_are_you_applying_for?, class: "text-white" %><br/>
+    <%= form.collection_select(:job_id, @job, :id, :title) %>
+  </div>
+
+  <div class="py-1">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "block shadow rounded-sm border text-black border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="py-1">
+    <%= form.label :email %>
+    <%= form.email_field :email, class: "block shadow rounded-sm border text-black border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="flex gap-5 relative">
+  <div class="py-1">
+    <%= form.label :telephone_number %>
+    <%= form.text_field :tel_no, class: "block shadow rounded-sm border text-black border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="py-1">
+    <%= form.label :location %>
+    <%= form.text_field :location, class: "block shadow rounded-sm border text-black border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  </div>
+
+  <div class="py-1">
+    <%= form.label :cover_letter %>
+    <%= form.text_area :cover_letter, class: "block shadow rounded-sm border text-black border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="py-1">
+    <%= form.label :"resume/cv" %>
+    <%= form.file_field :resume, class: "block shadow rounded-sm border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit "Apply now", class: "rounded-sm py-2 px-5 bg-green-500 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
+</div>
+</div>

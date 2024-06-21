@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee: one
+  department: one
+  data_of_appraisal: 2024-06-11
+  achievement: MyString
+  skills: MyString
+  strengths: MyString
+  area_of_improvement: MyString
+  overal_performance: MyString
+  additional_comments: MyString
+
+two:
+  employee: two
+  department: two
+  data_of_appraisal: 2024-06-11
+  achievement: MyString
+  skills: MyString
+  strengths: MyString
+  area_of_improvement: MyString
+  overal_performance: MyString
+  additional_comments: MyString

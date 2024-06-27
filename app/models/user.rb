@@ -4,5 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  belongs_to :employee, optional: true  # Optional if not needed for all users
+  belongs_to :employee
 end

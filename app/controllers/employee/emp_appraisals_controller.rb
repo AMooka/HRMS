@@ -1,5 +1,6 @@
 class Employee::EmpAppraisalsController < EmployeeController
   before_action :load_employee
+  before_action :set_current_employee
   before_action :set_employee_emp_appraisal, only: %i[ show edit update destroy ]
 
   # GET /employee/emp_appraisals or /employee/emp_appraisals.json
@@ -13,9 +14,7 @@ class Employee::EmpAppraisalsController < EmployeeController
 
   # GET /employee/emp_appraisals/new
   def new
-    @employee = Job.order(:last_name)
     @employee_emp_appraisal = EmpAppraisal.new
-    @current_employee = current_user
   end
 
   # GET /employee/emp_appraisals/1/edit
@@ -25,7 +24,7 @@ class Employee::EmpAppraisalsController < EmployeeController
   # POST /employee/emp_appraisals or /employee/emp_appraisals.json
   def create
     @employee_emp_appraisal = EmpAppraisal.new(employee_emp_appraisal_params)
-
+    @employee_emp_appraisal.employee = current_employee
     respond_to do |format|
       if @employee_emp_appraisal.save
         format.html { redirect_to employee_emp_appraisal_url(@employee_emp_appraisal), notice: "Emp appraisal was successfully created." }
@@ -66,11 +65,15 @@ class Employee::EmpAppraisalsController < EmployeeController
       @employee_emp_appraisal = EmpAppraisal.find(params[:id])
     end
 
+    def set_current_employee
+      current_employee ||= current_employee
+    end
+
     def load_employee
       @employees = Employee.all
     end 
     # Only allow a list of trusted parameters through.
     def employee_emp_appraisal_params
-      params.require(:emp_appraisal).permit(:employee_id, :department_id, :data_of_appraisal, :achievement, :skills, :strengths, :area_of_improvement, :overal_performance, :additional_comments)
+      params.require(:emp_appraisal).permit(:employee_id, :data_of_appraisal, :achievement, :skills, :strengths, :area_of_improvement, :overal_performance, :additional_comments)
     end
 end

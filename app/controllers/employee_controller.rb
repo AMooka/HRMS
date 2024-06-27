@@ -1,7 +1,7 @@
 class EmployeeController < ApplicationController
     layout "employee"
     before_action :all_employees
-    before_action :authenticate_user!
+    before_action :authenticate_employee!
     
     def index 
         

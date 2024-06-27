@@ -13,6 +13,7 @@
   </head>
 
   <body>
+  <%if admin_signed_in? %>
     <main class="m-0 font-sans text-base antialiased font-normal leading-default bg-gray-50 text-slate-800 flex">  
 
     <!-- start sidebar -->
@@ -86,12 +87,12 @@
               </li>
             </ul>
 
-            <a class="py-2.7 text-sm mt-1 ease-nav-brand my-0 flex items-center whitespace-nowrap px-4 transition-colors" href="./pages/billing.html">
+            <%= link_to admin_emp_appraisals_path, class: "py-2.7 text-sm mt-1 ease-nav-brand my-0 flex items-center whitespace-nowrap px-4 transition-colors" do %>
               <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-full bg-white bg-center fill-current stroke-0 text-center xl:p-2.5">
                      <%= icon('fa-solid', 'chart-line', class: "text-sky-700")%>     
               </div>
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Performance Tracker</span>
-            </a>
+            <% end %>
 
     <p class="uppercase text-xs text-white mx-2 font-medium mt-3 tracking-wider">Recruitment</p>
           
@@ -113,30 +114,29 @@
 
             <p class="uppercase text-xs text-white mx-2 font-medium mt-3 tracking-wider">Account</p>
 
-          <%= link_to edit_admin_password_path, class: "mt-1 text-sm ease-nav-brand my-0 flex items-center whitespace-nowrap px-4 transition-colors" do %>
+          <%= link_to edit_admin_registration_path, class: "mt-1 text-sm ease-nav-brand my-0 flex items-center whitespace-nowrap px-4 transition-colors" do %>
               <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-full bg-white bg-center stroke-0 text-center">
                 <%= icon('fa-solid', 'address-card', class: "text-sky-700")%>
               </div>
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Profile</span>
             <% end %>
 
-            <%if admin_signed_in? %>
+            
             <%= link_to destroy_admin_session_path, method: :delete, confirm: "are you sure", class: "text-sm mt-1 ease-nav-brand my-0 flex items-center whitespace-nowrap px-4 transition-colors" do %>
               <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-full bg-white bg-center stroke-0 text-center">
                   <%= icon('fa-solid', 'sign-out', class: "text-sky-700")%>
               </div>
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Sign out</span>
-            <%end%>
-            <%else%>
-              <%= link_to new_admin_session_path %>
-            <%end%>     
-</div>
+            <%end%>   
+    </div>
 
     <div class="mt-2 w-full p-3">
       <%= yield%>
     </div>
   </div>
+  <%else%>
+      <%= link_to new_admin_session_path %>
+  <%end%>  
   </main>
-
   </body>
 </html>

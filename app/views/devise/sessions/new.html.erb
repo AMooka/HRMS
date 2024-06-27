@@ -5,11 +5,11 @@
 </section>
 
 <section class="p-8">
-<% if link_to admin_path %>
+<% if link_to  %>
   <%=link_to employee_path, class: "text-blue-500 w-[100px] inline-flex justify-center rounded-lg lg:block" do %>
    <p>Employee</p>
   <% end %>
-<%else%>
+<% elsif %>
   <%=link_to admin_path, class: "text-blue-500 inline-flex justify-center rounded-lg lg:block" do %>
    <p>Log in as Admin</p>
   <% end %>

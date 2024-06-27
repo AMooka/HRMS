@@ -15,16 +15,13 @@
   <% end %>
 
   <div class="my-5 font-medium">
-    <%= form.label :employee_id %>
-    <%= form.collection_select(:employee_id, Employee.all, :id, ->(employee){ "#{employee.last_name}#{employee.first_name}" }, {prompt: "select employee"}) %>
-  </div>
+    <%= form.label :employee_Id %>
+    <%= form.text_field :employee_id, value: current_employee.id, disabled: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
 
   <div class="my-5 font-medium">
-    <%= form.label :department_id %>
-    <%= form.collection_select(:department_id, Department.all, :id, :name, {prompt: "select department"}) %>
 
   <div class="my-5 font-medium">
-    <%= form.label :data_of_appraisal %>
+    <%= form.label :Report_Date %>
     <%= form.date_field :data_of_appraisal, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
@@ -59,7 +56,7 @@
   </div>
 
   <div class="inline">
-    <%= form.submit "submit", class: "rounded-md py-1 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit "submit", class: "rounded-sm py-1 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>
 </div>

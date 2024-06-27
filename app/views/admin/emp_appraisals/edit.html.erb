@@ -1,0 +1,64 @@
+<h1>form</h1>
+<div class="flex-col w-full md:w-11/12 mx-auto">
+<h1 class="text-center text-blue-500 py-3 text-xl font-medium">Complete the form by rating and commenting </h1>
+<div class="border-t-2 border-blue-500 rounded-sm bg-white px-5 py-2">
+<%= form_with(model: [:employee, @emp_appraisal], class: "contents") do |form| %>
+  <% if @emp_appraisal.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(@emp_appraisal.errors.count, "error") %> prohibited your appraisal form from being submitted:</h2>
+
+      <ul>
+        <% @emp_appraisal.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5 font-medium">
+    <%= form.label :employee_Id %>
+    <%= form.text_field :employee_id, value: current_employee.id, disabled: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
+
+  <div class="my-5 font-medium">
+
+  <div class="my-5 font-medium">
+    <%= form.label :Report_Date %>
+    <%= form.date_field :data_of_appraisal, disabled: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5 font-medium">
+    <%= form.label :achievement %>
+    <%= form.text_area :achievement, disabled: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5 font-medium">
+    <%= form.label :skills %>
+    <%= form.text_area :skills, disabled: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5 font-medium">
+    <%= form.label :strengths %>
+    <%= form.text_area :strengths, disabled: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5 font-medium">
+    <%= form.label :area_of_improvement %>
+    <%= form.text_area :area_of_improvement, disabled: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5 font-medium">
+    <%= form.label :overal_performance %>
+    <%= form.text_area :overal_performance, disabled: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5 font-medium">
+    <%= form.label :additional_comments %>
+    <%= form.text_area :additional_comments, disabled: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit "submit", class: "rounded-sm py-1 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
+</div>
+</div>

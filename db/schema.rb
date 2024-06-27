@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_19_064550) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_27_061928) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -60,7 +60,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_19_064550) do
 
   create_table "emp_appraisals", force: :cascade do |t|
     t.integer "employee_id", null: false
-    t.integer "department_id", null: false
     t.date "data_of_appraisal"
     t.string "achievement"
     t.string "skills"
@@ -70,19 +69,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_19_064550) do
     t.string "additional_comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["department_id"], name: "index_emp_appraisals_on_department_id"
     t.index ["employee_id"], name: "index_emp_appraisals_on_employee_id"
   end
 
   create_table "employees", force: :cascade do |t|
     t.string "last_name"
     t.string "first_name"
-    t.string "email"
     t.string "position"
-    t.integer "department_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "department_id", null: false
     t.index ["department_id"], name: "index_employees_on_department_id"
+    t.index ["email"], name: "index_employees_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
 
   create_table "job_applications", force: :cascade do |t|
@@ -140,13 +144,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_19_064550) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "employee_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "emp_appraisals", "departments"
   add_foreign_key "emp_appraisals", "employees"
   add_foreign_key "employees", "departments"
   add_foreign_key "job_applications", "jobs"

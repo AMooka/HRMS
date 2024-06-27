@@ -1,0 +1,22 @@
+<h1>Reports</h1>
+<table>
+<thead>
+    <tr>
+        <th>Employee</th>
+        <th>Email</th>
+        <th>Tel</th>
+        <th>Body</th>
+    </tr>
+</thead>
+
+<% @report.each do |report|%>
+<tbody>
+    <tr>
+        <td><%= link_to report.employee.last_name + ' ' + report.employee.first_name, edit_admin_emp_appraisal_path(report) %></td>
+        <td><%= report.employee.email %></td>
+        <td></td>
+        <td>2</td>
+    </tr>
+</tbody>
+<% end %>
+</table>

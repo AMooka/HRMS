@@ -13,12 +13,12 @@
 
   <div class="my-5">
     <%= form.label :Name %>
-    <%= form.collection_select(:employee_id, Employee.all, :id, ->(employee){ "#{employee.last_name}#{employee.first_name}" }, {prompt: "select employee"}) %>
+    <%= @employee_leave_application.employee.try(:email) %>
   </div>
 
   <div class="my-5">
     <%= form.label :leavetype_id %>
-    <%= form.collection_select(:leavetype_id, LeaveType.all, :id, :name, {promot: "selct leave you are applying for"})%>
+    <%= form.select :leavetype_id, @leave_types.map { |lt| [lt.name, lt.id]}%>
   </div>
 
   <div class="my-5">

@@ -1,50 +1,52 @@
 <%= form_with(model: [:admin, admin_employee], class: "contents") do |form| %>
   <% if admin_employee.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(admin_employee.errors.count, "error") %> prohibited this admin_employee from being saved:</h2>
+      <h2></h2>
 
       <ul>
         <% admin_employee.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li><%= error.full_message.capitalize %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="my-5 grid md:grid-cols-2 gap-3">
+  <div class="my-2 grid md:grid-cols-2 gap-3">
   <div>
     <%= form.label :last_name %>
-    <%= form.text_field :last_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :last_name, class: "block shadow rounded-sm border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
   <div>
     <%= form.label :first_name %>
-    <%= form.text_field :first_name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :first_name, class: "block shadow rounded-sm border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
   </div>
 
-  <div class="my-5">
+  <div class="my-2">
     <%= form.label :position %>
-    <%= form.text_field :position, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :position, class: "block shadow rounded-sm border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
+  <div class="my-2">
     <%= form.label :department_id %>
     <%= form.collection_select(:department_id, Department.all, :id, :name, {prompt: "select department"})%>
   </div>
 
-  <div class="my-5">
+  <div class="my-2">
     <%= form.label :email %>
-    <%= form.email_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.email_field :email, class: "block shadow rounded-sm border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
+  <div class="my-2 grid md:grid-cols-2 gap-3">
+  <div class="my-2">
     <%= form.label :password %>
-    <%= form.password_field :password, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", required: true %>
+    <%= form.password_field :password, class: "block shadow border rounded-sm border-gray-200 outline-none px-3 py-2 mt-2 w-full", required: true %>
   </div>
 
-  <div class="my-5">
+  <div class="my-2">
     <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", required: true %>
+    <%= form.password_field :password_confirmation, class: "block shadow border rounded-sm border-gray-200 outline-none px-3 py-2 mt-2 w-full", required: true %>
+  </div>
   </div>
 
   <div class="inline">

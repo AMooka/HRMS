@@ -1,7 +1,7 @@
 class Employee::LeaveApplicationsController < EmployeeController
   before_action :load_employees
   before_action :load_leave_types
-  before_action :set_employee_leave_application, only: %i[ show edit update destroy ]
+  # before_action :set_employee_leave_application, only: %i[ show edit update destroy ]
 
   # GET /employee/leave_applications or /employee/leave_applications.json
   def index
@@ -14,7 +14,7 @@ class Employee::LeaveApplicationsController < EmployeeController
 
   # GET /employee/leave_applications/new
   def new
-    @leave_type = Job.order(:name)
+    @leave_types = LeaveType.all
     @employee_leave_application = LeaveApplication.new
   end
 
@@ -25,7 +25,7 @@ class Employee::LeaveApplicationsController < EmployeeController
   # POST /employee/leave_applications or /employee/leave_applications.json
   def create
     @employee_leave_application = LeaveApplication.new(employee_leave_application_params)
-
+    @employee_leave_application = current_employee
     respond_to do |format|
       if @employee_leave_application.save
         format.html { redirect_to employee_leave_application_url(@employee_leave_application), notice: "Leave application was successfully created." }

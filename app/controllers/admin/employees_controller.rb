@@ -4,8 +4,8 @@ class Admin::EmployeesController < AdminController
 
   
   def index
-    @q = Employee.ransack(params[:q])
-    @admin_employees = @q.result.includes(:department)
+    @admin_employees = Employee.all
+    
     #@pagy, @admin_employees = pagy(Employee.all, items: 10)
   end
 
@@ -25,10 +25,10 @@ class Admin::EmployeesController < AdminController
   
   def create
     @admin_employee = Employee.new(admin_employee_params)
-    @user = @admin_employee.build_user(user_params)  # Build user nested within employee
-
     respond_to do |format|
       if @admin_employee.save
+        EmployeeMailer.with(employee: @employee).notify_employee.deliver_later
+        
         format.html { redirect_to admin_employee_url(@admin_employee), notice: "Employee was successfully created." }
         format.json { render :show, status: :created, location: @admin_employee }
       else
@@ -69,14 +69,10 @@ class Admin::EmployeesController < AdminController
 
     # Only allow a list of trusted parameters through.
     def admin_employee_params
-      params.require(:employee).permit(:last_name, :first_name, :email, :position, :department_id)
+      params.require(:employee).permit(:last_name, :first_name, :email, :position, :department_id, :password, :password_confirmation)
     end
 
     def load_departments
       @departments = Department.all
-    end
-
-    def user_params
-      params.require(:employee).permit(:email, :password, :password_confirmation)  # User related fields
     end
 end

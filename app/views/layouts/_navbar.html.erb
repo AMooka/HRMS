@@ -11,9 +11,9 @@
         <span class="relative z-10">Job Openings</span>
         <% end %>
         
-        <a class="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-gray-700 transition-colors delay-150 hover:text-gray-900 hover:delay-0" href="/#pricing">
+        <%= link_to shortlist_index_path, class: "relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-gray-700 transition-colors delay-150 hover:text-gray-900 hover:delay-0" do %>
         <span class="relative z-10">Shortlist</span>
-        </a>
+        <% end %>
     </div>
     </div>
     <div class="flex items-center gap-6">
@@ -22,7 +22,7 @@
         </div>
 
         <%=link_to admin_path, class: "bg-blue-500 text-white inline-flex justify-center rounded-sm py-[calc(theme(spacing.2)-1px)] px-[calc(theme(spacing.3)-1px)] text-sm outline-2 outline-offset-2 transition-colors border-gray-300 text-gray-700 text-sm active:bg-gray-100 active:text-gray-700/80 lg:block" do %>
-        <p><%= icon('fa-solid', 'sign-in')%> Admin Log in</p>
+        <p><%= icon('fa-solid', 'sign-in')%> Log in</p>
         <% end %>
         </div>
     </div>

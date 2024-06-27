@@ -4,9 +4,6 @@ class Admin::DepartmentsController < AdminController
   # GET /admin/departments or /admin/departments.json
   def index
     @admin_departments = Department.all
-    
-    #@department = Department.find_by(id: params[:id])
-    #@employee_count = @department.employees.count
   end
 
   # GET /admin/departments/1 or /admin/departments/1.json

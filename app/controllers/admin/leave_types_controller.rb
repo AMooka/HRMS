@@ -1,5 +1,5 @@
 class Admin::LeaveTypesController < AdminController
-  before_action :set_admin_leave_type, only: %i[ show edit update destroy ]
+  before_action :set_leave_type, only: %i[ show edit update destroy ]
 
   # GET /admin/leave_types or /admin/leave_types.json
   def index
@@ -60,7 +60,7 @@ class Admin::LeaveTypesController < AdminController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_admin_leave_type
+    def set_leave_type
       @admin_leave_type = LeaveType.find(params[:id])
     end
 

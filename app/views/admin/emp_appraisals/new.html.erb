@@ -1,63 +1,63 @@
-<%= form_with(model: [:employee, employee_emp_appraisal], class: "contents") do |form| %>
-  <% if employee_emp_appraisal.errors.any? %>
+<div class="flex-col w-full md:w-11/12 mx-auto">
+<h1 class="text-center text-blue-500 py-3 text-xl font-medium">Fill the appraisal form below </h1>
+<div class="border-t-2 border-blue-500 rounded-sm bg-white px-5 py-2">
+<%= form_with(model: [:employee, @admin_emp_appraisal], class: "contents") do |form| %>
+  <% if @employee_emp_appraisal.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(employee_emp_appraisal.errors.count, "error") %> prohibited this employee_emp_appraisal from being saved:</h2>
+      <h2><%= pluralize(@employee_emp_appraisal.errors.count, "error") %> prohibited your appraisal form from being submitted:</h2>
 
       <ul>
-        <% employee_emp_appraisal.errors.each do |error| %>
+        <% @employee_emp_appraisal.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :employee %>
-    <%= f.hidden_field :employee_id, value: current_employee.id %>
-  </div>
+  <div class="my-5 font-medium">
+    <%= form.label :employee_Id %>
+    <%= form.text_field :employee_id, value: current_employee.id, disabled: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
 
-  <div class="my-5">
-    <%= form.label :department_id %>
-    <%= form.collection_select(:department_id, Department.all, :id, :name) %>
-    <%= form.text_field :department_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  <div class="my-5 font-medium">
 
-  <div class="my-5">
-    <%= form.label :data_of_appraisal %>
+  <div class="my-5 font-medium">
+    <%= form.label :Report_Date %>
     <%= form.date_field :data_of_appraisal, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
+  <div class="my-5 font-medium">
     <%= form.label :achievement %>
     <%= form.text_area :achievement, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
+  <div class="my-5 font-medium">
     <%= form.label :skills %>
     <%= form.text_area :skills, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
+  <div class="my-5 font-medium">
     <%= form.label :strengths %>
     <%= form.text_area :strengths, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
+  <div class="my-5 font-medium">
     <%= form.label :area_of_improvement %>
     <%= form.text_area :area_of_improvement, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
+  <div class="my-5 font-medium">
     <%= form.label :overal_performance %>
     <%= form.text_area :overal_performance, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
+  <div class="my-5 font-medium">
     <%= form.label :additional_comments %>
     <%= form.text_area :additional_comments, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit "submit", class: "rounded-sm py-1 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>
+</div>
+</div>
